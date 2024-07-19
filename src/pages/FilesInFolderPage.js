@@ -29,6 +29,13 @@ const FilesInFolderPage = ({ folderName, onNavigate }) => {
     setShowModal(false);
   };
 
+  const handleDownload = (file) => {
+    const link = document.createElement('a');
+    link.href = `data:image/png;base64,${file.image_base64}`;
+    link.download = file.filename;
+    link.click();
+  };
+
   return (
     <div className="files-in-folder-page">
       <h2>{folderName} 폴더의 처리된 파일</h2>
@@ -43,6 +50,7 @@ const FilesInFolderPage = ({ folderName, onNavigate }) => {
               onClick={() => handleFileClick(file)}
             />
             <p className="processed-file-name">{file.filename}</p>
+            <button onClick={() => handleDownload(file)}>다운로드</button>
           </div>
         ))}
       </div>
@@ -56,6 +64,7 @@ const FilesInFolderPage = ({ folderName, onNavigate }) => {
               className="modal-image"
             />
             <p className="modal-filename">{selectedFile.filename}</p>
+            <button onClick={() => handleDownload(selectedFile)}>다운로드</button>
           </div>
         </div>
       )}
