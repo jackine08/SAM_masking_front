@@ -1,7 +1,7 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, forwardRef, useImperativeHandle } from 'react';
 import axios from 'axios';
 
-const FileList = () => {
+const FileList = forwardRef((props, ref) => {
   const [files, setFiles] = useState([]);
 
   useEffect(() => {
@@ -17,10 +17,14 @@ const FileList = () => {
     }
   };
 
+  useImperativeHandle(ref, () => ({
+    refresh: fetchFiles,
+  }));
+
   const handlePerformInference = async () => {
     try {
-      const response = await axios.post(`http://192.168.0.68:8000/inference`);
-      // console.log('Inference result:', response.data);
+      const response = await axios.post('http://192.168.0.68:8000/inference');
+      console.log('Inference result:', response);
       // setInferenceResult(response.data); // Store inference result in state
     } catch (error) {
       console.error('Error performing inference:', error);
@@ -38,9 +42,8 @@ const FileList = () => {
           </li>
         ))}
       </ul>
-
     </div>
   );
-};
+});
 
 export default FileList;

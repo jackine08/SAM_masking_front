@@ -2,7 +2,6 @@ import React, { useState } from 'react';
 import './App.css';
 import ImageUploadPage from './pages/ImageUploadPage';
 import ProcessedFilesPage from './pages/ProcessedFilesPage';
-import FolderImagesPage from './pages/FolderImagesPage';
 
 const App = () => {
   const [currentPage, setCurrentPage] = useState('upload'); // 초기 페이지 설정

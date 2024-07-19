@@ -59,7 +59,7 @@ const ProcessedFilesPage = () => {
       </div>
     );
   };
-  
+
   const downloadFile = (file) => {
     const link = document.createElement('a');
     link.href = `data:image/png;base64,${file.image_base64}`;
@@ -70,13 +70,13 @@ const ProcessedFilesPage = () => {
   return (
     <div className="processed-files-page">
       <h2>처리된 폴더</h2>
-      <ul>
+      <div className="folders-container">
         {folders.map((folder, index) => (
-          <li key={index} onClick={() => handleFolderClick(folder)}>
+          <div key={index} className="folder-item" onClick={() => handleFolderClick(folder)}>
             {folder}
-          </li>
+          </div>
         ))}
-      </ul>
+      </div>
       {selectedFolder && (
         <div>
           <h2>{selectedFolder} 폴더의 처리된 파일</h2>
