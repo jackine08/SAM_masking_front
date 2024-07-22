@@ -39,7 +39,7 @@ const ImageUploadPage = () => {
     formData.append('coordinates', JSON.stringify(selectedAreaCoords));
 
     try {
-      const response = await axios.post('http://localhost:8000/upload_file', formData, {
+      const response = await axios.post('http://192.168.0.68:8000/upload_file', formData, {
         headers: { 'Content-Type': 'multipart/form-data' },
       });
       console.log('File uploaded successfully:', response.data);

@@ -10,6 +10,8 @@ RUN npm install axios
 
 RUN npm install serve
 
+RUN npm run build
+
 EXPOSE 3000
 
 CMD ["npx", "serve", "-s", "build"]
