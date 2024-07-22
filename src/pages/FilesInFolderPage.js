@@ -8,7 +8,7 @@ const FilesInFolderPage = ({ folderName, onNavigate }) => {
 
   const fetchProcessedFiles = useCallback(async () => {
     try {
-      const response = await axios.get(`http://localhost:8000/get_processed_files?folder_name=${folderName}`);
+      const response = await axios.get(`http://192.168.0.68:8000/get_processed_files?folder_name=${folderName}`);
       setProcessedFiles(response.data);
     } catch (error) {
       console.error('파일 목록을 가져오는 데 실패했습니다:', error);

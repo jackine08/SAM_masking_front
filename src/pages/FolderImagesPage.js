@@ -11,7 +11,7 @@ const FolderImagesPage = ({ match }) => {
 
   const fetchImages = async () => {
     try {
-      const response = await axios.get(`http://localhost:8000/get_processed_files/${folderName}`);
+      const response = await axios.get(`http://192.168.0.68:8000/get_processed_files/${folderName}`);
       setImages(response.data);
     } catch (error) {
       console.error(`Error fetching images for folder '${folderName}':`, error);
@@ -20,7 +20,7 @@ const FolderImagesPage = ({ match }) => {
 
   const handleDownload = async (filename) => {
     try {
-      const response = await axios.post(`http://localhost:8000/download_file`, { filename }, {
+      const response = await axios.post(`http://192.168.0.68:8000/download_file`, { filename }, {
         responseType: 'blob', // Specify the response type as blob
       });
 
