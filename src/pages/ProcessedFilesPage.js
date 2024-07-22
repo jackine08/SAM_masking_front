@@ -10,7 +10,7 @@ const ProcessedFilesPage = ({ onNavigate, handleFolderSelect }) => {
 
   const fetchFolders = async () => {
     try {
-      const response = await axios.get('http://192.168.0.68:8000/processed_files');
+      const response = await axios.get('http://localhost:8000/processed_files');
       setFolders(response.data);
     } catch (error) {
       console.error('폴더 목록을 가져오는 데 실패했습니다:', error);
