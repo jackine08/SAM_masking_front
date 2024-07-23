@@ -10,8 +10,11 @@ const FolderImagesPage = ({ match }) => {
   }, []);
 
   const fetchImages = async () => {
+    const server_ip = process.env.REACT_APP_API_HOST;
+
     try {
-      const response = await axios.get(`http://192.168.0.68:8000/get_processed_files/${folderName}`);
+    const server_ip = process.env.REACT_APP_API_HOST;
+      const response = await axios.get(`${server_ip}/get_processed_files/${folderName}`);
       setImages(response.data);
     } catch (error) {
       console.error(`Error fetching images for folder '${folderName}':`, error);

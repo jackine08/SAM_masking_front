@@ -37,9 +37,10 @@ const ImageUploadPage = () => {
     const formData = new FormData();
     formData.append('files', selectedFile);
     formData.append('coordinates', JSON.stringify(selectedAreaCoords));
+    const server_ip = process.env.REACT_APP_API_HOST;
 
     try {
-      const response = await axios.post('http://192.168.0.68:8000/upload_file', formData, {
+      const response = await axios.post(`${server_ip}/upload_file`, formData, {
         headers: { 'Content-Type': 'multipart/form-data' },
       });
       console.log('File uploaded successfully:', response.data);

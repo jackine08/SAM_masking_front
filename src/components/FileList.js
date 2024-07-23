@@ -11,8 +11,10 @@ const FileList = forwardRef((props, ref) => {
   }, []);
 
   const fetchFiles = async () => {
+    const server_ip = process.env.REACT_APP_API_HOST;
+
     try {
-      const response = await axios.get('http://192.168.0.68:8000/unprocessed_files');
+      const response = await axios.get(`${server_ip}/unprocessed_files`);
       setFiles(response.data); // 파일 목록을 업데이트합니다.
     } catch (error) {
       console.error('파일 목록을 가져오는 중 오류 발생:', error);
@@ -26,9 +28,11 @@ const FileList = forwardRef((props, ref) => {
   const handlePerformInference = async () => {
     setLoading(true); // 로딩 시작
     setInferenceMessage(''); // 이전 메시지 제거
+    const server_ip = process.env.REACT_APP_API_HOST;
 
     try {
-      const response = await axios.post('http://192.168.0.68:8000/inference');
+      const response = await axios.post(`${server_ip}/inference`);
+
       console.log('Inference result:', response.data);
       setInferenceMessage('이미지 처리 완료'); // 처리 완료 메시지 설정
       fetchFiles(); // 파일 목록 갱신
